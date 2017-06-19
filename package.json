@@ -1,6 +1,8 @@
 {
   "name": "hmdoc",
   "version": "0.0.1",
+  "homepage": "https://github.com/joeldentici/hmdoc",
+  "bugs": "https://github.com/joeldentici/hmdoc/issues",
   "description": "A command line utility to generate source code documentation.",
   "contributors": [
     {
