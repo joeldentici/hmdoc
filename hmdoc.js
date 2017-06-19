@@ -325,6 +325,14 @@ function generateDocumentation(projectName, modules) {
 		<head>
 			<title>${projectName} Documentation</title>
 			<style>
+				.module-header, .module-description {
+					background-color: #EFEFEF;
+				}
+
+				.function-description {
+					background-color: #DDD;
+				}
+
 				.module-header {
 					border: 1px solid;
 					border-radius: 5px;
@@ -355,6 +363,7 @@ function generateDocumentation(projectName, modules) {
 				}
 
 				.function-description {
+					backgound-color: #EFEFEF;
 					border: 1px dotted;
 					border-radius: 5px;
 					padding: 10px;
@@ -391,6 +400,7 @@ function generateDocumentation(projectName, modules) {
 					padding: 10px 20px;
 					background-color: #EFEFEF;
 					opacity: 0.8;
+					cursor: pointer;
 				}
 			</style>
 			<script type="text/javascript">
