@@ -1,5 +1,5 @@
 {
-  "name": "doc",
+  "name": "hmdoc",
   "version": "0.0.1",
   "description": "A command line utility to generate source code documentation.",
   "contributors": [
@@ -9,6 +9,9 @@
     }
   ],
   "scripts": {
-    "install": "node doc.js 'Documentation Generator' doc.js > documentation.html"
+    "install": "node hmdoc.js 'hmdoc' hmdoc.js > documentation.html"
+  },
+  "bin": {
+    "hmdoc" : "./hmdoc.js"
   }
 }

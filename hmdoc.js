@@ -1,15 +1,17 @@
+#!/usr/bin/env node
+
 /**
- *	doc
+ *	hmdoc
  *	written by Joel Dentici
  *	on 6/18/2017
  *
  *	Usage:
  *	
- *	node doc.js "Name of Project" path/to/src/code
+ *	hmdoc "Name of Project" path/to/src/code
  *
  *	or
  *
- *	node doc.js "Name of Project" file.js
+ *	hmdoc "Name of Project" file.js
  *
  *	Generates documentation for JavaScript modules
  *	using JavaDoc style comments, but with HM type signatures
@@ -212,7 +214,7 @@ function generateFunctionSynopsis(module) {
 			<li>
 				<a href="#doc.module.${module.name}.func.${fn.name}">
 					<b>${fn.name}</b>
-				</a> :: ${prettyHmType(fn.hmType)}
+				</a> <b>::</b> ${prettyHmType(fn.hmType)}
 			</li>
 		`;
 	}
@@ -249,7 +251,7 @@ function generateFunctionDescription(module) {
 			<div class="function-description"
 			id="doc.module.${module.name}.func.${fn.name}">
 				<div class="function-name">
-					<b>${fn.name}</b> :: ${prettyHmType(fn.hmType)}
+					<b>${fn.name}</b> <b>::</b> ${prettyHmType(fn.hmType)}
 				</div>
 				<div class="function-desc">
 					${fn.description.replace(/\n\n/g, "<br><br>")}
