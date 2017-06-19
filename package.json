@@ -1,0 +1,14 @@
+{
+  "name": "doc",
+  "version": "0.0.1",
+  "description": "A command line utility to generate source code documentation.",
+  "contributors": [
+    {
+      "name": "Joel Dentici",
+      "email": "joeldentici@cox.net"
+    }
+  ],
+  "scripts": {
+    "install": "node doc.js 'Documentation Generator' doc.js > documentation.html"
+  }
+}
