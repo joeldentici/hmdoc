@@ -96,7 +96,7 @@ function parseFunction(comment) {
 	const hmType = funcComment[0].substring(
 	 funcComment[0].indexOf("::") + 2).trim();
 
-	const description = funcComment.slice(1).join("\n");
+	const description = funcComment.slice(1).map(x => x.trim()).join("\n");
 
 	return new DocFunction({
 		name,
