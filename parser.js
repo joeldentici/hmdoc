@@ -154,7 +154,7 @@ function parseModule(comments) {
 		const date = parse(parseDate, modComment);
 		const description = modComment.slice(3).join('\n').trim();
 
-		const functions = comments.slice(1).map(parseFunction);
+		const functions = comments.slice(1).map(parseFunction).sort(funcCmp);
 
 		return new DocModule({
 			name,
@@ -167,13 +167,25 @@ function parseModule(comments) {
 	catch (e) { return null; }
 }
 
+function funcCmp(f1, f2) {
+	const name1 = f1.name, name2 = f2.name;
+
+	return name1.localeCompare(name2);
+}
+
+function modCmp(m1, m2) {
+	const name1 = m1.name, name2 = m2.name;
+
+	return name1.localeCompare(name2);
+}
+
 /**
  *	parseModules :: [string] -> [DocModule]
  *
  *	Parses module source code into DocModules.
  */
 function parseModules(srcs) {
-	return srcs.map(x => parseModule(getDocComments(x))).filter(x => x);
+	return srcs.map(x => parseModule(getDocComments(x))).filter(x => x).sort(modCmp);
 }
 
 module.exports = parseModules;
