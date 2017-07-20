@@ -14,9 +14,6 @@
       "email": "joeldentici@cox.net"
     }
   ],
-  "scripts": {
-    "install": "node hmdoc.js 'hmdoc' hmdoc.js > documentation.html"
-  },
   "bin": {
     "hmdoc": "./hmdoc.js"
   }
