@@ -49,7 +49,7 @@ function readFiles(dir, exts) {
 		.filter(([n,stats]) => !stats.isFile())
 		.map(([n, stats]) => n);
 
-	const subDirFiles = concat(dirs.map(readFiles));
+	const subDirFiles = concat(dirs.map(x => readFiles(x, exts)));
 
 	const dirFiles = files.map(x => fs.readFileSync(x).toString());
 
