@@ -11,11 +11,11 @@ const generateMD = require('./markdown.js');
  *
  *	Usage:
  *	
- *	<code>hmdoc "Name of Project" path/to/src/code [output-type] > output.html</code>
+ *	<code>hmdoc "Name of Project" path/to/src/code [output-type] [...extensions] > output.html</code>
  *
  *	or
  *
- *	<code>hmdoc "Name of Project" file.js [output-type] > output.html</code>
+ *	<code>hmdoc "Name of Project" file [output-type] [...extensions] > output.html</code>
  *
  *	Generates documentation for JavaScript modules
  *	using JavaDoc style comments, but with HM type signatures
@@ -38,9 +38,9 @@ const generateMD = require('./markdown.js');
  *	NOTE: Rather than passing the path to a directory, the path to a single file
  *	can also be used (it must be a JavaScript file of course).
  */
-function makeDocs(generator, projectName, dir) {
+function makeDocs(generator, projectName, dir, exts) {
 	//[string]
-	const srcs = readFiles(dir);
+	const srcs = readFiles(dir, new Set(exts));
 	//[DocModule]
 	const modules = parseModules(srcs);
 	//string
@@ -56,6 +56,7 @@ const generators = {
 const [_, __, name, dir, genName] = process.argv;
 
 const generate = generators[genName || 'html'];
+const exts = ['.js'].concat(process.argv.slice(5));
 
 //read source code, parse comments, generate output and then print it to stdout
-console.log(makeDocs(generate, name, dir));
+console.log(makeDocs(generate, name, dir, exts));

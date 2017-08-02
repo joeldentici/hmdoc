@@ -25,11 +25,11 @@ function concat(arr) {
  *	Reads all the files in a directory into a list,
  *	recursively reading each subdirectory that is found.
  */
-function readFiles(dir) {
+function readFiles(dir, exts) {
 	//special case to make sure we can handle
 	//a single file rather than directory
 	if (fs.statSync(dir).isFile()) {
-		if (dir.endsWith('.js'))
+		if (exts.has(path.extname(dir)))
 			return [fs.readFileSync(dir).toString()];
 		else {
 			console.error('Expected JS file');
@@ -43,7 +43,7 @@ function readFiles(dir) {
 	const files = fileStats
 		.filter(([n,stats]) => stats.isFile())
 		.map(([n, stats]) => n)
-		.filter(n => !n.startsWith('.') && n.endsWith('.js'));
+		.filter(n => !n.startsWith('.') && exts.has(path.extname(n)));
 
 	const dirs = fileStats
 		.filter(([n,stats]) => !stats.isFile())
